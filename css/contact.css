@@ -1,0 +1,25 @@
+/* Contact Section Styles
+-------------------------------------- */
+.contact-section {
+    padding: var(--spacing-lg) 0;
+    text-align: center;
+}
+
+.contact-section p {
+    font-size: 1.25rem;
+    margin-bottom: var(--spacing-md);
+    color: var(--color-text-secondary);
+}
+
+.contact-email {
+    display: inline-block;
+    font-size: 1.5rem;
+    color: var(--color-text-primary);
+    border-bottom: 2px solid var(--color-text-secondary);
+    padding-bottom: 5px;
+    transition: color 0.3s ease;
+}
+
+.contact-email:hover {
+    color: var(--color-text-secondary);
+}

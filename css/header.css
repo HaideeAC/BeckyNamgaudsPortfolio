@@ -1,0 +1,158 @@
+/* Header Styles
+-------------------------------------- */
+header {
+    padding: var(--spacing-sm) 0;
+    position: fixed;
+    width: 100%;
+    top: 0;
+    left: 0;
+    z-index: 1000;
+    background-color: var(--color-bg-primary);
+    transition: all 0.3s ease;
+}
+
+header.scrolled {
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    padding: var(--spacing-xs) 0;
+}
+
+.header-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.logo {
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: var(--color-text-primary);
+    z-index: 1001; /* Above the mobile menu */
+}
+
+/* Navigation */
+nav {
+    transition: all 0.3s ease;
+}
+
+nav ul {
+    display: flex;
+}
+
+nav ul li {
+    margin-left: var(--spacing-md);
+}
+
+nav ul li a {
+    color: var(--color-text-primary);
+    transition: color 0.3s ease;
+    display: block;
+    padding: 5px 0;
+}
+
+nav ul li a:hover {
+    color: var(--color-text-secondary);
+}
+
+/* Hamburger Menu */
+.menu-toggle {
+    display: none;
+    cursor: pointer;
+    width: 30px;
+    height: 22px;
+    position: relative;
+    z-index: 1001; /* Above the mobile menu */
+}
+
+.menu-toggle span {
+    display: block;
+    position: absolute;
+    height: 2px;
+    width: 100%;
+    background: var(--color-text-primary);
+    border-radius: 2px;
+    opacity: 1;
+    left: 0;
+    transform: rotate(0deg);
+    transition: .3s ease-in-out;
+}
+
+.menu-toggle span:nth-child(1) {
+    top: 0px;
+}
+
+.menu-toggle span:nth-child(2),
+.menu-toggle span:nth-child(3) {
+    top: 10px;
+}
+
+.menu-toggle span:nth-child(4) {
+    top: 20px;
+}
+
+/* X animation for hamburger when active */
+.menu-toggle.active span:nth-child(1) {
+    top: 10px;
+    width: 0%;
+    left: 50%;
+}
+
+.menu-toggle.active span:nth-child(2) {
+    transform: rotate(45deg);
+}
+
+.menu-toggle.active span:nth-child(3) {
+    transform: rotate(-45deg);
+}
+
+.menu-toggle.active span:nth-child(4) {
+    top: 10px;
+    width: 0%;
+    left: 50%;
+}
+
+/* Responsive Styles */
+@media (max-width: 768px) {
+    .menu-toggle {
+        display: block;
+    }
+    
+    nav {
+        position: fixed;
+        top: 0;
+        right: -100%;
+        width: 100%;
+        height: 100vh;
+        background-color: var(--color-bg-primary);
+        padding-top: 80px;
+        transition: right 0.3s ease;
+    }
+    
+    nav.active {
+        right: 0;
+    }
+    
+    nav ul {
+        flex-direction: column;
+        align-items: center;
+    }
+    
+    nav ul li {
+        margin: var(--spacing-sm) 0;
+    }
+    
+    nav ul li a {
+        font-size: 1.25rem;
+        padding: 10px 0;
+    }
+}
+
+/* For even smaller screens */
+@media (max-width: 480px) {
+    .logo {
+        font-size: 1.25rem;
+    }
+    
+    .header-container {
+        padding: 0 var(--spacing-xs);
+    }
+}

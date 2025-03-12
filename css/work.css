@@ -1,0 +1,55 @@
+/* Work Section Styles
+-------------------------------------- */
+.work-section {
+    padding: var(--spacing-lg) 0;
+}
+
+.work-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: var(--spacing-md);
+}
+
+.work-item {
+    overflow: hidden;
+    background-color: var(--color-bg-secondary);
+    border-radius: 5px;
+    transition: transform 0.3s ease;
+}
+
+.work-item:hover {
+    transform: translateY(-5px);
+}
+
+.work-image {
+    height: 250px;
+    width: 100%;
+    background-color: var(--color-accent);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--color-text-secondary);
+    font-weight: bold;
+}
+
+.work-content {
+    padding: var(--spacing-sm);
+}
+
+.work-content h3 {
+    font-size: 1.25rem;
+    margin-bottom: var(--spacing-xs);
+}
+
+.work-content p {
+    color: var(--color-text-secondary);
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .work-grid {
+        grid-template-columns: 1fr;
+        max-width: 500px;
+        margin: 0 auto;
+    }
+}

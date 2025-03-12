@@ -1,0 +1,35 @@
+/* Footer Styles
+-------------------------------------- */
+footer {
+    padding: var(--spacing-md) 0;
+    background-color: var(--color-bg-secondary);
+    text-align: center;
+}
+
+.social-links {
+    display: flex;
+    justify-content: center;
+    margin-bottom: var(--spacing-sm);
+}
+
+.social-link {
+    margin: 0 var(--spacing-xs);
+    width: 40px;
+    height: 40px;
+    background-color: var(--color-accent);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--color-text-secondary);
+    transition: background-color 0.3s ease;
+}
+
+.social-link:hover {
+    background-color: #c1af99;
+}
+
+.footer-text {
+    color: var(--color-text-secondary);
+    font-size: 0.875rem;
+}
