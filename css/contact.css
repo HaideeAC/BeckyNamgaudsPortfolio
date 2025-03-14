@@ -1,16 +1,12 @@
-/* Contact Section Styles
--------------------------------------- */
+/* Contact Section Styles */
 .contact-section {
-  min-height: 100vh; /* Ensure it takes full viewport height */
+  min-height: 100vh;
   background-color: var(--color-bg-secondary);
   position: relative;
   display: flex;
   flex-direction: column;
-  padding: 0;
+  padding: var(--spacing-lg) 0 0;
   scroll-margin-top: var(--header-height);
-  clear: both;
-  margin-top: 0;
-  padding-top: var(--spacing-lg);
   overflow: hidden;
 }
 
@@ -18,14 +14,12 @@
   flex: 1;
   display: flex;
   flex-direction: column;
-  padding-top: var(--spacing-md);
-  padding-bottom: 0;
 }
 
 .contact-section .section-title {
   text-align: center;
   margin-bottom: var(--spacing-md);
-  font-size: 2.5rem;
+  font-size: 2.25rem;
   font-weight: bold;
 }
 
@@ -36,7 +30,7 @@
   margin-bottom: var(--spacing-xs);
 }
 
-/* Image container and positioning */
+/* Image container */
 .image-container {
   flex: 0.85;
   position: relative;
@@ -52,14 +46,10 @@
   top: 0;
   left: 0;
   width: 100%;
-  /* Increased height for parallax effect */
   height: 130%;
   object-fit: cover;
-  /* Center the image */
   object-position: center;
   will-change: transform;
-  /* Remove transition to allow direct JavaScript control */
-  transition: none !important;
 }
 
 /* Form container */
@@ -119,8 +109,6 @@
   transition: all 0.3s ease;
   display: inline-block;
   border-radius: 0;
-  position: relative;
-  overflow: hidden;
   width: 100%;
 }
 
@@ -139,7 +127,6 @@ footer {
   margin-top: var(--spacing-md);
   border-top: 1px solid var(--color-accent);
   width: 100%;
-  margin-bottom: 0; /* Ensure no extra space below footer */
 }
 
 .footer-text {
@@ -208,27 +195,45 @@ footer {
   opacity: 0;
 }
 
-/* Responsive styles */
+/* Responsive styles - Tablets */
+@media (max-width: 900px) {
+  .contact-layout {
+    gap: var(--spacing-sm);
+  }
+  
+  .image-container {
+    min-height: 600px;
+  }
+  
+  .contact-section .section-title {
+    font-size: 2rem;
+  }
+}
+
+/* Medium screens */
 @media (max-width: 768px) {
   .contact-layout {
     flex-direction: column;
   }
 
   .image-container {
-    min-height: 550px;
-    max-height: 60vh;
-    flex: 1;
+    min-height: 500px;
+    max-height: 50vh;
+    flex: none;
+  }
+
+  .contact-image {
+    height: 120%;
   }
 
   .form-container {
-    flex: 1;
+    flex: none;
   }
 
   footer {
     flex-direction: column;
     gap: var(--spacing-sm);
     text-align: center;
-    margin-bottom: 0; /* Ensure no extra space in responsive view */
   }
 
   .social-icons {
@@ -236,13 +241,62 @@ footer {
   }
 }
 
+/* Small screens */
 @media (max-width: 480px) {
+  .contact-section {
+    padding-top: var(--spacing-md);
+  }
+
+  .contact-section .section-title {
+    font-size: 1.75rem;
+    margin-bottom: var(--spacing-sm);
+  }
+  
   .image-container {
-    min-height: 450px;
+    min-height: 400px;
+    max-height: 40vh;
   }
 
   .form-group input,
   .form-group textarea {
     padding: 10px;
+  }
+  
+  .form-group label {
+    font-size: 0.8rem;
+  }
+  
+  .submit-btn {
+    padding: 10px 20px;
+  }
+}
+
+/* Extra small screens */
+@media (max-width: 360px) {
+  .image-container {
+    min-height: 320px;
+    max-height: 35vh;
+  }
+  
+  .contact-section .section-title {
+    font-size: 1.5rem;
+  }
+  
+  .form-group {
+    margin-bottom: var(--spacing-xs);
+  }
+  
+  .social-icon {
+    width: 35px;
+    height: 35px;
+    font-size: 1rem;
+  }
+  
+  .footer-text {
+    font-size: 0.75rem;
+  }
+  
+  .contact-layout {
+    gap: var(--spacing-xs);
   }
 }
