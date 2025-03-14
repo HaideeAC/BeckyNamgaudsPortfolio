@@ -18,8 +18,8 @@ document.addEventListener("DOMContentLoaded", () => {
   // Configuration
   const settings = {
     intensity: 3.3, // Higher = more movement
-    initialOffset: -100, // Starting position percentage
-    rangeOfMotion: 30, // Total range the image can move
+    initialOffset: -105, // Starting position percentage
+    rangeOfMotion: 31, // Total range the image can move
   };
 
   // Set initial position to ensure transform is working
