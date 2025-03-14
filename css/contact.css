@@ -1,25 +1,248 @@
 /* Contact Section Styles
 -------------------------------------- */
 .contact-section {
-    padding: var(--spacing-lg) 0;
+  min-height: 100vh; /* Ensure it takes full viewport height */
+  background-color: var(--color-bg-secondary);
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  padding: 0;
+  scroll-margin-top: var(--header-height);
+  clear: both;
+  margin-top: 0;
+  padding-top: var(--spacing-lg);
+  overflow: hidden;
+}
+
+.contact-section .container {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  padding-top: var(--spacing-md);
+  padding-bottom: 0;
+}
+
+.contact-section .section-title {
+  text-align: center;
+  margin-bottom: var(--spacing-md);
+  font-size: 2.5rem;
+  font-weight: bold;
+}
+
+.contact-layout {
+  display: flex;
+  gap: var(--spacing-md);
+  flex: 1;
+  margin-bottom: var(--spacing-xs);
+}
+
+/* Image container and positioning */
+.image-container {
+  flex: 0.85;
+  position: relative;
+  min-height: 650px;
+  max-height: 90vh;
+  border-radius: 5px;
+  overflow: hidden;
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15);
+}
+
+.contact-image {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  /* Increased height for parallax effect */
+  height: 130%;
+  object-fit: cover;
+  /* Center the image */
+  object-position: center;
+  will-change: transform;
+  /* Remove transition to allow direct JavaScript control */
+  transition: none !important;
+}
+
+/* Form container */
+.form-container {
+  flex: 1.15;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+}
+
+/* Form styling */
+.form-group {
+  margin-bottom: var(--spacing-sm);
+  position: relative;
+}
+
+.form-group label {
+  display: block;
+  margin-bottom: 5px;
+  font-size: 0.85rem;
+  font-weight: bold;
+  color: var(--color-text-secondary);
+  letter-spacing: 1px;
+}
+
+.form-group input,
+.form-group textarea {
+  width: 100%;
+  padding: 12px;
+  border: none;
+  border-bottom: 2px solid var(--color-accent);
+  background-color: transparent;
+  color: var(--color-text-primary);
+  border-radius: 0;
+  transition: border-color 0.3s ease;
+}
+
+.form-group input:focus,
+.form-group textarea:focus {
+  outline: none;
+  border-color: var(--color-text-primary);
+}
+
+.form-group textarea {
+  min-height: 100px;
+  resize: vertical;
+}
+
+.submit-btn {
+  background-color: var(--color-text-primary);
+  color: var(--color-bg-primary);
+  border: none;
+  padding: 12px 30px;
+  cursor: pointer;
+  font-weight: bold;
+  letter-spacing: 1px;
+  transition: all 0.3s ease;
+  display: inline-block;
+  border-radius: 0;
+  position: relative;
+  overflow: hidden;
+  width: 100%;
+}
+
+.submit-btn:hover {
+  background-color: var(--color-accent);
+  color: var(--color-text-primary);
+  transform: translateY(-3px);
+}
+
+/* Footer integration */
+footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: var(--spacing-xs) 0;
+  margin-top: var(--spacing-md);
+  border-top: 1px solid var(--color-accent);
+  width: 100%;
+  margin-bottom: 0; /* Ensure no extra space below footer */
+}
+
+.footer-text {
+  color: var(--color-text-secondary);
+  font-size: 0.875rem;
+}
+
+.social-media {
+  display: flex;
+  align-items: center;
+}
+
+.social-icons {
+  display: flex;
+  gap: var(--spacing-xs);
+}
+
+.social-icon {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--color-text-secondary);
+  font-size: 1.125rem;
+  transition: all 0.3s ease;
+  background-color: transparent;
+  border: 1px solid var(--color-accent);
+}
+
+.social-icon:hover {
+  background-color: var(--color-accent);
+  color: var(--color-text-primary);
+  transform: translateY(-3px);
+}
+
+/* Animation effects */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.form-group {
+  animation: fadeIn 0.5s ease forwards;
+  opacity: 0;
+}
+
+.form-group:nth-child(1) {
+  animation-delay: 0.1s;
+}
+.form-group:nth-child(2) {
+  animation-delay: 0.2s;
+}
+.form-group:nth-child(3) {
+  animation-delay: 0.3s;
+}
+.submit-btn {
+  animation: fadeIn 0.5s 0.4s ease forwards;
+  opacity: 0;
+}
+
+/* Responsive styles */
+@media (max-width: 768px) {
+  .contact-layout {
+    flex-direction: column;
+  }
+
+  .image-container {
+    min-height: 550px;
+    max-height: 60vh;
+    flex: 1;
+  }
+
+  .form-container {
+    flex: 1;
+  }
+
+  footer {
+    flex-direction: column;
+    gap: var(--spacing-sm);
     text-align: center;
+    margin-bottom: 0; /* Ensure no extra space in responsive view */
+  }
+
+  .social-icons {
+    justify-content: center;
+  }
 }
 
-.contact-section p {
-    font-size: 1.25rem;
-    margin-bottom: var(--spacing-md);
-    color: var(--color-text-secondary);
-}
+@media (max-width: 480px) {
+  .image-container {
+    min-height: 450px;
+  }
 
-.contact-email {
-    display: inline-block;
-    font-size: 1.5rem;
-    color: var(--color-text-primary);
-    border-bottom: 2px solid var(--color-text-secondary);
-    padding-bottom: 5px;
-    transition: color 0.3s ease;
-}
-
-.contact-email:hover {
-    color: var(--color-text-secondary);
+  .form-group input,
+  .form-group textarea {
+    padding: 10px;
+  }
 }

@@ -1,8 +1,14 @@
-/**
- * Main JavaScript file for Becky Namgauds website
- */
+/* ================================
+ ======*Main JavaScript file=======
+ ================================ */
 
 document.addEventListener("DOMContentLoaded", () => {
+  // Include parallax effect script
+  const parallaxScript = document.createElement("script");
+  parallaxScript.src = "/parallax-effect.js";
+  parallaxScript.async = false;
+  document.head.appendChild(parallaxScript);
+
   // DOM Elements
   const header = document.querySelector("header");
   const menuToggle = document.createElement("div");
@@ -35,6 +41,18 @@ document.addEventListener("DOMContentLoaded", () => {
     document.body.classList.toggle("menu-open");
   });
 
+  // Function to get document height
+  const getDocumentHeight = () => {
+    return Math.max(
+      document.body.scrollHeight,
+      document.documentElement.scrollHeight,
+      document.body.offsetHeight,
+      document.documentElement.offsetHeight,
+      document.body.clientHeight,
+      document.documentElement.clientHeight
+    );
+  };
+
   // Close menu when clicking on a nav link
   navLinks.forEach((link) => {
     link.addEventListener("click", (e) => {
@@ -53,10 +71,28 @@ document.addEventListener("DOMContentLoaded", () => {
         if (targetElement) {
           // Add delay to smooth closing before scrolling
           setTimeout(() => {
-            window.scrollTo({
-              top: targetElement.offsetTop - 70, // Offset for header
-              behavior: "smooth",
-            });
+            // Get the header height for offset
+            const headerHeight = header.offsetHeight;
+
+            // Special handling for contact section to prevent extra scrolling
+            if (targetId === "#contact") {
+              // Calculate the maximum scroll position
+              const maxScroll = getDocumentHeight() - window.innerHeight;
+
+              // For contact section, scroll to bottom of page if it's the last section
+              window.scrollTo({
+                top: maxScroll,
+                behavior: "smooth",
+              });
+            } else {
+              // For other sections, use normal scrolling
+              const offsetPosition = targetElement.offsetTop - headerHeight;
+
+              window.scrollTo({
+                top: offsetPosition,
+                behavior: "smooth",
+              });
+            }
           }, 300);
         }
       }
