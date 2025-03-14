@@ -197,16 +197,35 @@ footer {
 
 /* Responsive styles - Tablets */
 @media (max-width: 900px) {
+  .contact-section {
+    min-height: auto;
+    padding-bottom: var(--spacing-sm);
+  }
+  
+  .contact-image {
+  height: 250%;
+}
+
   .contact-layout {
-    gap: var(--spacing-sm);
+    flex-direction: column;
+    flex: 0 0 auto;
   }
   
   .image-container {
-    min-height: 600px;
+    min-height: 450px;
+    max-height: 50vh;
   }
   
   .contact-section .section-title {
     font-size: 2rem;
+  }
+  
+  footer {
+    margin-top: var(--spacing-xs);
+  }
+  
+  .contact-section .container {
+    flex: 0 0 auto;
   }
 }
 
@@ -217,23 +236,22 @@ footer {
   }
 
   .image-container {
-    min-height: 500px;
+    min-height: 300px;
     max-height: 50vh;
     flex: none;
   }
 
-  .contact-image {
-    height: 120%;
-  }
-
+    .contact-image {
+  height: 300%;
+}
   .form-container {
     flex: none;
   }
 
   footer {
-    flex-direction: column;
-    gap: var(--spacing-sm);
+    gap: var(--spacing-xs);
     text-align: center;
+    margin-top: var(--spacing-xs);
   }
 
   .social-icons {

@@ -13,20 +13,67 @@ document.addEventListener("DOMContentLoaded", () => {
     return;
   }
 
-  console.log("Parallax: Initializing effect");
+  // Configuration with responsive adjustments
+  const getSettings = () => {
+    // Base settings
+    const settings = {
+      intensity: 3.3, // Base intensity
+      initialOffset: -105, // Starting position percentage
+      rangeOfMotion: 31, // Total range the image can move
+    };
 
-  // Configuration
-  const settings = {
-    intensity: 3.3, // Higher = more movement
-    initialOffset: -105, // Starting position percentage
-    rangeOfMotion: 31, // Total range the image can move
+    // Adjust settings based on screen size
+    const width = window.innerWidth;
+
+    if (width <= 360) {
+      // Extra small screens
+      return {
+        ...settings,
+        intensity: 1.8, // Base intensity
+        initialOffset: -60, // Starting position percentage
+        rangeOfMotion: 15, // Total range the image can move
+      };
+    } else if (width <= 480) {
+      // Small screens
+      return {
+        ...settings,
+        intensity: 2.2, // Base intensity
+        initialOffset: -70, // Starting position percentage
+        rangeOfMotion: 20, // Total range the image can move
+      };
+    } else if (width <= 768) {
+      // Medium screens
+      return {
+        ...settings,
+        intensity: 2.7, // Base intensity
+        initialOffset: -103, // Starting position percentage
+        rangeOfMotion: 39, // Total range the image can move
+      };
+    } else if (width <= 900) {
+      // Tablet screens
+      return {
+        ...settings,
+        intensity: 3, // Base intensity
+        initialOffset: -104, // Starting position percentage
+        rangeOfMotion: 35, // Total range the image can move
+      };
+    }
+
+    // Default (larger screens)
+    return settings;
   };
 
-  // Set initial position to ensure transform is working
+  // Get initial settings
+  let settings = getSettings();
+
+  // Set initial position
   contactImage.style.transform = `translateY(${settings.initialOffset}%)`;
 
   // Function to calculate and update parallax position
   function updateParallax() {
+    // Get current settings (in case screen size changed)
+    settings = getSettings();
+
     // Get section position relative to viewport
     const rect = contactSection.getBoundingClientRect();
     const viewportHeight = window.innerHeight;
@@ -49,10 +96,18 @@ document.addEventListener("DOMContentLoaded", () => {
     contactImage.style.transform = `translateY(${offset}%)`;
   }
 
+  // Performance optimization - debounce function for resize event
+  let resizeTimeout;
+  function handleResize() {
+    clearTimeout(resizeTimeout);
+    resizeTimeout = setTimeout(() => {
+      settings = getSettings();
+      updateParallax();
+    }, 100);
+  }
+
   // Performance optimization for scroll events
   let ticking = false;
-
-  // Handle scroll event with requestAnimationFrame
   function handleScroll() {
     if (!ticking) {
       window.requestAnimationFrame(() => {
@@ -63,17 +118,20 @@ document.addEventListener("DOMContentLoaded", () => {
     }
   }
 
-  // Handle window resize
-  function handleResize() {
+  // Check if reduced motion is preferred by the user
+  const prefersReducedMotion = window.matchMedia(
+    "(prefers-reduced-motion: reduce)"
+  ).matches;
+
+  if (!prefersReducedMotion) {
+    // Add event listeners only if reduced motion is not preferred
+    window.addEventListener("scroll", handleScroll, { passive: true });
+    window.addEventListener("resize", handleResize, { passive: true });
+
+    // Initialize parallax on load
     updateParallax();
+  } else {
+    // If user prefers reduced motion, set a static position
+    contactImage.style.transform = "translateY(-40%)";
   }
-
-  // Add event listeners
-  window.addEventListener("scroll", handleScroll, { passive: true });
-  window.addEventListener("resize", handleResize, { passive: true });
-
-  // Initialize parallax on load
-  updateParallax();
-
-  console.log("Parallax: Effect initialized");
 });
