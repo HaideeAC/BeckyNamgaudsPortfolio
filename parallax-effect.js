@@ -29,17 +29,17 @@ document.addEventListener("DOMContentLoaded", () => {
       // Extra small screens
       return {
         ...settings,
-        intensity: 1.8, // Base intensity
-        initialOffset: -60, // Starting position percentage
-        rangeOfMotion: 15, // Total range the image can move
+        intensity: 2.3, // Base intensity
+        initialOffset: -102, // Starting position percentage
+        rangeOfMotion: 46, // Total range the image can move
       };
     } else if (width <= 480) {
       // Small screens
       return {
         ...settings,
-        intensity: 2.2, // Base intensity
-        initialOffset: -70, // Starting position percentage
-        rangeOfMotion: 20, // Total range the image can move
+        intensity: 2.5, // Base intensity
+        initialOffset: -102, // Starting position percentage
+        rangeOfMotion: 43, // Total range the image can move
       };
     } else if (width <= 768) {
       // Medium screens
