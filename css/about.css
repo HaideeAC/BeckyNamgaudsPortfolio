@@ -1,55 +1,216 @@
-/* About Section Styles
+/* About Section Styles - Redesigned
 -------------------------------------- */
 .about-section {
-    padding: var(--spacing-lg) 0;
-    background-color: var(--color-bg-secondary);
-    margin-top: var(--spacing-lg);
+  padding: var(--spacing-lg) 0;
+  background-color: var(--color-bg-secondary);
+  margin-top: var(--spacing-lg);
 }
 
-.about-content {
-    display: flex;
-    align-items: center;
-    gap: var(--spacing-lg);
+/* First paragraph layout - image on left */
+.about-intro {
+  display: flex;
+  align-items: flex-start;
+  gap: var(--spacing-md);
+  margin-bottom: var(--spacing-md);
 }
 
-.about-image {
-    flex: 1;
-    height: 400px;
-    background-color: var(--color-accent);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    color: var(--color-text-secondary);
-    font-weight: bold;
+.about-intro-image {
+  flex: 1;
+  max-width: 45%;
+  height: auto;
 }
 
-.about-text {
-    flex: 1;
+.about-intro-image img {
+  width: 100%;
+  height: auto;
+  display: block;
 }
 
-.about-text h2 {
-    font-size: 2.25rem; /* 36px */
+.about-intro-text {
+  flex: 1;
+}
+
+.about-intro-text h2 {
+  font-size: 2.25rem; /* 36px */
+  margin-bottom: var(--spacing-sm);
+}
+
+/* Second and third paragraph layout - image on right */
+.about-middle {
+  display: flex;
+  align-items: flex-start;
+  gap: var(--spacing-md);
+  margin-bottom: var(--spacing-md);
+  flex-direction: row-reverse;
+}
+
+.about-middle-image {
+  flex: 1;
+  max-width: 45%;
+  height: auto;
+}
+
+.about-middle-image img {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+.about-middle-text {
+  flex: 1;
+}
+
+/* Full width image separator */
+.about-separator {
+  width: 100%;
+  height: 80px;
+  overflow: hidden;
+  margin: var(--spacing-md) 0;
+}
+
+.about-separator img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* Circle image with text wrap - Enhanced with shape-outside */
+.about-circle-wrap {
+  position: relative;
+  margin: var(--spacing-md) 0;
+  padding: var(--spacing-md) 0;
+  overflow: hidden;
+  text-align: justify;
+}
+
+.about-circle-image {
+  width: 400px;
+  height: 400px;
+  border-radius: 50%;
+  overflow: hidden;
+  border: 10px solid #fff;
+  float: right;
+  shape-outside: circle(50%);
+  margin: 20px 0 20px 20px;
+  animation: fadeIn 4s forwards;
+  opacity: 0;
+}
+
+@keyframes fadeIn {
+  50% {
+    width: 380px;
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+    width: 400px;
+  }
+}
+
+.about-circle-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.about-circle-text {
+  margin-right: 220px;
+}
+
+.about-circle-text p {
+  padding: 5px;
+  margin: 0 0 1em;
+}
+
+/* Add a version with text on right and image on left */
+.about-circle-wrap.image-left .about-circle-image {
+  float: left;
+  margin: 20px 20px 20px 0;
+  clear: left;
+}
+
+.about-circle-wrap.image-left .about-circle-text {
+  margin-right: 0;
+  margin-left: 220px;
+}
+
+/* Final paragraphs */
+.about-final {
+  margin-bottom: var(--spacing-md);
+}
+
+.about-final p {
+  margin-bottom: 1em;
+}
+
+/* Responsive adjustments */
+@media screen and (max-width: 900px) {
+  .about-circle-image {
+    width: 350px;
+    height: 350px;
+  }
+
+  .about-circle-text {
+    margin-right: 170px;
+  }
+
+  .about-circle-wrap.image-left .about-circle-text {
+    margin-left: 170px;
+  }
+}
+
+@media screen and (max-width: 800px) {
+  .about-intro,
+  .about-middle {
+    flex-direction: column;
+  }
+
+  .about-intro-image,
+  .about-middle-image {
+    max-width: 100%;
     margin-bottom: var(--spacing-sm);
+  }
+
+  .about-circle-wrap:before {
+    display: none;
+  }
+
+  .about-circle-image {
+    width: 50%;
+    height: auto;
+    min-width: 100px;
+    animation: scaleDown 1s forwards;
+  }
+
+  @keyframes scaleDown {
+    100% {
+      width: 50%;
+      height: auto;
+      opacity: 1;
+    }
+  }
+
+  .about-circle-text,
+  .about-circle-wrap.image-left .about-circle-text {
+    margin-left: 0;
+    margin-right: 0;
+  }
 }
 
-.about-text p {
-    margin-bottom: var(--spacing-sm);
-    color: var(--color-text-secondary);
-}
+@media screen and (max-width: 480px) {
+  .about-circle-wrap:before {
+    display: none;
+  }
 
-/* Responsive */
-@media (max-width: 768px) {
-    .about-content {
-        flex-direction: column;
-    }
-    
-    .about-image, 
-    .about-text {
-        width: 100%;
-    }
-    
-    .about-image {
-        margin-bottom: var(--spacing-md);
-        height: 300px;
-    }
+  .about-circle-image {
+    float: none;
+    width: 200px;
+    height: 200px;
+    margin: 0 auto var(--spacing-md);
+    clear: both;
+  }
+
+  .about-circle-text {
+    text-align: center;
+  }
 }

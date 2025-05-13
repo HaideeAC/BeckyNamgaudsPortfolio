@@ -13,7 +13,6 @@
     <link rel="stylesheet" href="/css/work.css" />
     <link rel="stylesheet" href="/css/about.css" />
     <link rel="stylesheet" href="/css/contact.css" />
-    <link rel="stylesheet" href="/css/footer.css" />
     <!-- Fonts&Icons -->
     <link
       rel="stylesheet"
@@ -55,59 +54,74 @@
       </div>
     </section>
 
+    <!-- Replace the existing work section in index.html with this code -->
+
     <section id="work" class="work-section">
       <div class="container">
         <h2 class="section-title">WORK</h2>
+
+        <!-- Add filter buttons -->
+        <div class="work-filter">
+          <button class="work-filter-btn active" data-filter="all">ALL</button>
+          <button class="work-filter-btn" data-filter="own">
+            OWN PROJECTS
+          </button>
+          <button class="work-filter-btn" data-filter="collaboration">
+            COLLABORATIONS
+          </button>
+        </div>
+
         <div class="work-grid">
-          <div class="work-item">
+          <!-- Add data-category attribute to each work item -->
+          <div class="work-item visible" data-category="own">
             <div class="work-image"><img src="/images/work0.png" alt="" /></div>
             <div class="work-content">
               <h3>PERFORMANCE TITLE</h3>
             </div>
           </div>
-          <div class="work-item">
+          <div class="work-item visible" data-category="own">
             <div class="work-image"><img src="/images/work1.png" alt="" /></div>
             <div class="work-content">
               <h3>PERFORMANCE TITLE</h3>
             </div>
           </div>
-          <div class="work-item">
+          <div class="work-item visible" data-category="collaboration">
             <div class="work-image"><img src="/images/work2.png" alt="" /></div>
             <div class="work-content">
               <h3>PERFORMANCE TITLE</h3>
             </div>
           </div>
-          <div class="work-item">
+          <div class="work-item visible" data-category="own">
             <div class="work-image"><img src="/images/work3.png" alt="" /></div>
             <div class="work-content">
               <h3>PERFORMANCE TITLE</h3>
             </div>
           </div>
-          <div class="work-item">
+          <div class="work-item visible" data-category="collaboration">
             <div class="work-image"><img src="/images/work4.png" alt="" /></div>
             <div class="work-content">
               <h3>PERFORMANCE TITLE</h3>
             </div>
           </div>
-          <div class="work-item">
+          <div class="work-item visible" data-category="own">
             <div class="work-image"><img src="/images/work5.png" alt="" /></div>
             <div class="work-content">
               <h3>PERFORMANCE TITLE</h3>
             </div>
           </div>
-          <div class="work-item">
+          <div class="work-item visible" data-category="collaboration">
             <div class="work-image"><img src="/images/work6.png" alt="" /></div>
             <div class="work-content">
               <h3>PERFORMANCE TITLE</h3>
             </div>
           </div>
-          <div class="work-item">
+          <div class="work-item visible" data-category="own">
             <div class="work-image"><img src="/images/work7.png" alt="" /></div>
             <div class="work-content">
               <h3>PERFORMANCE TITLE</h3>
             </div>
           </div>
-          <div class="work-item">
+          <div class="work-item visible" data-category="collaboration">
             <div class="work-image"><img src="/images/work8.png" alt="" /></div>
             <div class="work-content">
               <h3>PERFORMANCE TITLE</h3>
@@ -117,11 +131,15 @@
       </div>
     </section>
 
+    <!-- Redesigned About Section -->
     <section id="about" class="about-section">
       <div class="container">
-        <div class="about-content">
-          <div class="about-image"><img src="/images/about.png" alt="" /></div>
-          <div class="about-text">
+        <!-- First paragraph with image on left -->
+        <div class="about-intro">
+          <div class="about-intro-image">
+            <img src="/images/about.png" alt="Becky Namgauds" />
+          </div>
+          <div class="about-intro-text">
             <h2>BECKY NAMGAUDS</h2>
             <p>
               Rebecca Namgauds is a multidisciplinary artist and choreographer
@@ -133,6 +151,15 @@
               engages the body as a site of resistance, intimacy, and ritual,
               often in direct dialogue with nature and the elements.
             </p>
+          </div>
+        </div>
+
+        <!-- Second and third paragraphs with image on right -->
+        <div class="about-middle">
+          <div class="about-middle-image">
+            <img src="/images/about.png" alt="Becky Namgauds performance" />
+          </div>
+          <div class="about-middle-text">
             <p>
               Her latest work, THE HEAT, delves into themes of domesticity, the
               mundane, survival and endurance, channeling both urgency and raw
@@ -142,16 +169,30 @@
               renewal.
             </p>
             <p>
-              Rebecca was a Time & Space commission artist at Sadler’s Wells for
+              Rebecca was a Time & Space commission artist at Sadler's Wells for
               2023/24 and continues to develop innovative dance-theatre
               projects. She has worked as an invited choreographer for Anjali
               Dance Company, collaborated with Paraorchestra and musician Liza
-              Bec and choreographed a visual work for 12 Ensemble Orchestra’s
+              Bec and choreographed a visual work for 12 Ensemble Orchestra's
               tour of Metamorphosis. Alongside her artistic practice, she is a
               guest lecturer at The Place, London Contemporary Dance School, and
               the Laban MA programme, mentoring the next generation of movement
               artists.
             </p>
+          </div>
+        </div>
+
+        <!-- Full width image separator -->
+        <div class="about-separator">
+          <img src="/images/about.png" alt="Becky Namgauds performance" />
+        </div>
+
+        <!-- Circle image with text wrap -->
+        <div class="about-circle-wrap">
+          <div class="about-circle-image">
+            <img src="/images/about.png" alt="Becky Namgauds performance" />
+          </div>
+          <div class="about-circle-text">
             <p>
               Her independent works have toured internationally, premiering at
               major festivals and institutions. Like Honey was featured in the
@@ -162,35 +203,52 @@
               she has since created original works for The Place (LCDS),
               Emergence and Centre for Advanced Training. Works for galleries
               include Walsall Art Gallery where she created an original
-              performance for DanielSilver’s solo exhibition and more recently
+              performance for DanielSilver's solo exhibition and more recently
               the V&A Friday Late: Diva.
             </p>
-            <p>
-              Rebecca’s movement direction spans across artistic disciplines,
-              from luxury brand campaigns for Hermès to collaborating on
-              Georgina Starr’s film Quarantaine. She has also worked on Jade
-              O’Belle’s Birthright, an exploration of Black, queer femininity
-              through Yoruba iconography, and movement-directed An Intermission,
-              a film project supporting young adults experiencing homelessness.
-            </p>
-            <p>
-              As a performer, she has worked across theatre, music, and fashion.
-              She was part of the original cast of Marianne Elliott’s Angels in
-              America at the National Theatre and has collaborated extensively
-              with choreographer Holly Blakey, performing in video works and
-              fashion campaigns for Vivienne Westwood and Issey Miyake. Her
-              dance credits include music videos for Dua Lipa, Harry Styles, and
-              Mura Masa, alongside performances for brands like Gucci, Vogue,
-              Adidas, and Lululemon.
-            </p>
-            <p>
-              Continuing to push the boundaries of movement and
-              interdisciplinary performance, Rebecca Namgauds remains committed
-              to crafting work that resonates physically and
-              politically—immersing audiences in the urgency and sensuality of
-              embodied experience.
-            </p>
           </div>
+        </div>
+
+        <!-- Full width image separator -->
+        <div class="about-separator">
+          <img src="/images/about.png" alt="Becky Namgauds performance" />
+        </div>
+
+        <!-- Final paragraphs -->
+        <div class="about-final">
+          <p>
+            Rebecca's movement direction spans across artistic disciplines, from
+            luxury brand campaigns for Hermès to collaborating on Georgina
+            Starr's film Quarantaine. She has also worked on Jade O'Belle's
+            Birthright, an exploration of Black, queer femininity through Yoruba
+            iconography, and movement-directed An Intermission, a film project
+            supporting young adults experiencing homelessness.
+          </p>
+        </div>
+
+        <!-- Full width image separator -->
+        <div class="about-separator">
+          <img src="/images/about.png" alt="Becky Namgauds performance" />
+        </div>
+
+        <!-- Final paragraphs -->
+        <div class="about-final">
+          <p>
+            As a performer, she has worked across theatre, music, and fashion.
+            She was part of the original cast of Marianne Elliott's Angels in
+            America at the National Theatre and has collaborated extensively
+            with choreographer Holly Blakey, performing in video works and
+            fashion campaigns for Vivienne Westwood and Issey Miyake. Her dance
+            credits include music videos for Dua Lipa, Harry Styles, and Mura
+            Masa, alongside performances for brands like Gucci, Vogue, Adidas,
+            and Lululemon.
+          </p>
+          <p>
+            Continuing to push the boundaries of movement and interdisciplinary
+            performance, Rebecca Namgauds remains committed to crafting work
+            that resonates physically and politically—immersing audiences in the
+            urgency and sensuality of embodied experience.
+          </p>
         </div>
       </div>
     </section>
@@ -200,7 +258,7 @@
         <div class="contact-layout">
           <div class="image-container">
             <img
-              src="/images/contact.png"
+              src="/images/contact2.jpg"
               alt="Becky Namgauds performing"
               class="contact-image"
             />
@@ -265,7 +323,8 @@
       </div>
     </section>
 
-    <script src="parallax-effect.js"></script>
-    <script src="main.js"></script>
+    <script src="/main.js"></script>
+    <script src="/parallax-effect.js"></script>
+    <script src="/work.js"></script>
   </body>
 </html>
