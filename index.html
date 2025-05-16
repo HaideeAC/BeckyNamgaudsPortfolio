@@ -36,7 +36,7 @@
   </head>
   <body>
     <header>
-      <div class="container header-container">
+      <div class="header-container">
         <a href="#" class="logo">BECKY NAMGAUDS</a>
         <nav>
           <ul>
@@ -48,16 +48,17 @@
       </div>
     </header>
 
-    <section class="hero">
-      <div class="hero-content">
-        <h1>CHOREOGRAPHER & DANCER</h1>
-      </div>
-    </section>
+    <section class="hero" id="hero">
+  <div class="hero-content">
+    <h1>CHOREOGRAPHER & DANCER</h1>
+    <div class="zoom-element">
+      <div class="zoom-dot"></div>
+      <div class="zoom-text">WORK</div>
+    </div>
+  </div>
+</section>
 
-    <!-- Replace the existing work section in index.html with this code -->
-
-    <section id="work" class="work-section">
-      <div class="container">
+    <section id="work" class="work-section zoom-target">
         <h2 class="section-title">WORK</h2>
 
         <!-- Add filter buttons -->
@@ -128,12 +129,10 @@
             </div>
           </div>
         </div>
-      </div>
     </section>
 
-    <!-- Redesigned About Section -->
+    <!-- About Section -->
     <section id="about" class="about-section">
-      <div class="container">
         <!-- First paragraph with image on left -->
         <div class="about-intro">
           <div class="about-intro-image">
@@ -250,11 +249,10 @@
             urgency and sensuality of embodied experience.
           </p>
         </div>
-      </div>
     </section>
 
     <section id="contact" class="contact-section">
-      <div class="container">
+      <div class="contact-container">
         <div class="contact-layout">
           <div class="image-container">
             <img
@@ -326,5 +324,6 @@
     <script src="/main.js"></script>
     <script src="/parallax-effect.js"></script>
     <script src="/work.js"></script>
+    <script src="/scroll-zoom.js"></script>
   </body>
 </html>

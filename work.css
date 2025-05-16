@@ -2,23 +2,28 @@
 -------------------------------------- */
 .work-section {
   padding: var(--spacing-lg) 0;
+  position: relative;
+  z-index: 20;
 }
 
 .work-grid {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
   gap: var(--spacing-md);
+  position: relative;
 }
 
 .work-item {
   overflow: hidden;
   background-color: var(--color-bg-secondary);
   border-radius: 5px;
-  transition: transform 0.3s ease;
+  transition: all 0.3s ease;
+  position: relative;
 }
 
 .work-item:hover {
   transform: translateY(-5px);
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
 }
 
 .work-image {
@@ -30,37 +35,45 @@
   justify-content: center;
   color: var(--color-text-secondary);
   font-weight: bold;
+  position: relative;
+  overflow: hidden;
+}
+
+.work-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.5s ease;
+}
+
+.work-item:hover .work-image img {
+  transform: scale(1.05);
 }
 
 .work-content {
   padding: var(--spacing-sm);
+  background-color: inherit;
+  position: relative;
+  z-index: 2;
 }
 
 .work-content h3 {
   font-size: 1.25rem;
   margin-bottom: var(--spacing-xs);
+  transition: color 0.3s ease;
 }
 
 .work-content p {
   color: var(--color-text-secondary);
 }
 
-/* Responsive */
-@media (max-width: 768px) {
-  .work-grid {
-    grid-template-columns: 1fr;
-    max-width: 500px;
-    margin: 0 auto;
-  }
-}
-
-/* Add this to your work.css file */
-
 /* Filter Buttons */
 .work-filter {
   display: flex;
   justify-content: center;
   margin-bottom: var(--spacing-md);
+  position: relative;
+  z-index: 2;
 }
 
 .work-filter-btn {
@@ -107,7 +120,7 @@
 .work-item {
   opacity: 0;
   transform: translateY(10px);
-  transition: opacity 0.3s ease, transform 0.3s ease;
+  transition: opacity 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease;
 }
 
 .work-item.visible {
@@ -116,32 +129,35 @@
 }
 
 /* Stagger the animations */
-.work-item:nth-child(1) {
-  transition-delay: 0.05s;
+.work-item:nth-child(1) { transition-delay: 0.05s; }
+.work-item:nth-child(2) { transition-delay: 0.1s; }
+.work-item:nth-child(3) { transition-delay: 0.15s; }
+.work-item:nth-child(4) { transition-delay: 0.2s; }
+.work-item:nth-child(5) { transition-delay: 0.25s; }
+.work-item:nth-child(6) { transition-delay: 0.3s; }
+.work-item:nth-child(7) { transition-delay: 0.35s; }
+.work-item:nth-child(8) { transition-delay: 0.4s; }
+.work-item:nth-child(9) { transition-delay: 0.45s; }
+
+/* Ensure proper stacking for content */
+.work-section.revealed .section-title,
+.work-section.revealed .work-filter,
+.work-section.revealed .work-grid {
+  position: relative;
+  z-index: 2;
 }
-.work-item:nth-child(2) {
-  transition-delay: 0.1s;
+
+/* Add extra padding at the bottom of work section */
+.work-section {
+  padding-bottom: calc(var(--spacing-lg) * 1.5);
 }
-.work-item:nth-child(3) {
-  transition-delay: 0.15s;
-}
-.work-item:nth-child(4) {
-  transition-delay: 0.2s;
-}
-.work-item:nth-child(5) {
-  transition-delay: 0.25s;
-}
-.work-item:nth-child(6) {
-  transition-delay: 0.3s;
-}
-.work-item:nth-child(7) {
-  transition-delay: 0.35s;
-}
-.work-item:nth-child(8) {
-  transition-delay: 0.4s;
-}
-.work-item:nth-child(9) {
-  transition-delay: 0.45s;
+
+/* Transition helper for sections */
+.section-spacer {
+  height: 50px;
+  width: 100%;
+  position: relative;
+  z-index: 20;
 }
 
 /* Responsive styles */
@@ -152,5 +168,21 @@
 
   .work-filter-btn {
     margin-bottom: var(--spacing-xs);
+  }
+  
+  .work-grid {
+    grid-template-columns: 1fr;
+    max-width: 500px;
+    margin: 0 auto;
+  }
+}
+
+@media (max-width: 480px) {
+  .work-item:hover {
+    transform: translateY(-3px);
+  }
+  
+  .work-image {
+    height: 220px;
   }
 }

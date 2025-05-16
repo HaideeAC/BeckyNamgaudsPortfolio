@@ -1,4 +1,10 @@
 /* Contact Section Styles */
+.contact-container {
+  width: 100%;
+  max-width: 1500px;
+  margin: 0 auto;
+  padding: 0 var(--spacing-sm);
+}
 .contact-section {
   min-height: 100vh;
   position: relative;
@@ -7,7 +13,10 @@
   padding: var(--spacing-lg) 0 0;
   scroll-margin-top: var(--header-height);
   overflow: hidden;
+  position: relative;
+  z-index: 25;
 }
+
 
 /* Background image with gradient overlay */
 .contact-section::before {

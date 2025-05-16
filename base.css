@@ -14,8 +14,6 @@
   --spacing-md: 30px;
   --spacing-lg: 50px;
 
-  /* Container Width */
-  --container-width: 1200px;
 
   /* Header Height */
   --header-height: 70px;
@@ -33,12 +31,7 @@ body.menu-open {
   overflow: hidden; /* Prevent scrolling when menu is open */
 }
 
-.container {
-  width: 100%;
-  max-width: var(--container-width);
-  margin: 0 auto;
-  padding: 0 var(--spacing-sm);
-}
+
 
 /* Typography */
 h1,
@@ -65,13 +58,4 @@ h4 {
     margin-bottom: var(--spacing-md);
   }
 
-  .container {
-    padding: 0 var(--spacing-sm);
-  }
-}
-
-@media (max-width: 480px) {
-  .container {
-    padding: 0 var(--spacing-xs);
-  }
 }

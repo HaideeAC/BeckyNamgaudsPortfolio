@@ -1,9 +1,14 @@
 /* About Section Styles - Redesigned
 -------------------------------------- */
+
 .about-section {
+  position: relative;
+  z-index: 25;
   padding: var(--spacing-lg) 0;
   background-color: var(--color-bg-secondary);
   margin-top: var(--spacing-lg);
+  /* Add a shadow at the top to create a visual separation from work section */
+  box-shadow: 0 -15px 30px rgba(0, 0, 0, 0.1);
 }
 
 /* First paragraph layout - image on left */

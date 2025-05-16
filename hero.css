@@ -1,37 +1,240 @@
-/* Hero Section Styles
+/* Enhanced visual styles for section transitions
 -------------------------------------- */
+
+/* Base styles for the hero and zoom elements */
 .hero {
-    height: 80vh;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    margin-bottom: var(--spacing-lg);
+  height: 80vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: var(--spacing-lg);
+  will-change: transform;
 }
 
 .hero-content {
-    text-align: center;
-    padding: 0 var(--spacing-sm);
+  text-align: center;
+  padding: 0 var(--spacing-sm);
+  will-change: transform;
 }
 
 .hero-content h1 {
-    font-size: 3rem; /* 48px */
-    margin-bottom: var(--spacing-sm);
+  font-size: 3rem; /* 48px */
+  margin-bottom: var(--spacing-sm);
 }
 
-.hero-content p {
-    font-size: 1.25rem; /* 20px */
-    max-width: 700px;
-    margin: 0 auto;
-    color: var(--color-text-secondary);
+/* Zoom transition elements */
+.zoom-element {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 10;
+  pointer-events: none;
+  opacity: 0;
 }
 
-/* Responsive */
+.zoom-dot {
+  width: 120px; /* Larger starting size reduces pixelation */
+  height: 120px; /* Larger starting size reduces pixelation */
+  background:rgba(95, 8, 2, 1);
+  background-size: 100% 100%; /* Ensure gradient fills element */
+  border-radius: 50%;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%) scale(1);
+  transform-origin: center center;
+  box-shadow: 0 0 50px rgba(238, 117, 51, 0.3); /* Add subtle glow */
+  will-change: transform;
+  backface-visibility: hidden; /* Reduce flickering */
+  filter: blur(0.5px); /* Slightly soften edges for better appearance */
+}
+
+.zoom-text {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  color: white;
+  font-size: 2.5rem;
+  font-weight: bold;
+  text-align: center;
+  white-space: nowrap;
+  opacity: 0;
+  letter-spacing: 3px;
+  transition: opacity 0.3s;
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3); /* Add shadow for readability */
+}
+
+/* Pin the hero section during zoom animation */
+.pin-hero {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100vh;
+  z-index: 5;
+}
+
+/* Work section transition styles */
+.work-section {
+  position: relative;
+  z-index: 20;
+  transition: background-color 0.5s ease;
+  background-color: transparent; /* Transparent background to show the fixed bg */
+}
+
+/* Fixed background that persists only during work section */
+.fixed-gradient-bg {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 15;
+  background: radial-gradient(
+    circle at center,
+    rgba(238, 117, 51, 1) 0%,
+    rgba(95, 8, 2, 1) 100%
+  );
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.8s ease, visibility 0.8s ease;
+  transform: translateZ(0); /* Force hardware acceleration */
+  backface-visibility: hidden; /* Reduce flickering */
+  will-change: opacity; /* Hint for browser optimization */
+}
+
+/* Active state - controlled by JS */
+.fixed-gradient-bg.active {
+  opacity: 1;
+  visibility: visible;
+}
+
+/* When the body has this class, ensure background is visible */
+body.in-work-section .fixed-gradient-bg {
+  opacity: 1;
+  visibility: visible;
+}
+
+/* Change the work section items to have white background */
+.work-section.revealed .work-item {
+  background-color: #fff;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+}
+
+/* Change the section title to white when section is revealed */
+.work-section.revealed .section-title {
+  color: #fff;
+}
+
+/* Change the filter buttons to white when section is revealed */
+.work-section.revealed .work-filter-btn {
+  color: rgba(255, 255, 255, 0.7);
+}
+
+.work-section.revealed .work-filter-btn:hover,
+.work-section.revealed .work-filter-btn.active {
+  color: #fff;
+}
+
+.work-section.revealed .work-filter-btn::after {
+  background-color: #fff;
+}
+
+/* Stacking context for proper layering during scroll */
+.work-section.scrolling-active {
+  z-index: 20;
+}
+
+/* About section styles - ensure proper stacking */
+.about-section {
+  position: relative;
+  z-index: 25;
+  background-color: var(--color-bg-secondary);
+  margin-top: var(--spacing-lg);
+  /* Add shadow at the top for visual separation from work section */
+  box-shadow: 0 -15px 30px rgba(0, 0, 0, 0.1);
+  will-change: transform; /* Optimize rendering */
+}
+
+/* Contact section - ensure proper stacking */
+.contact-section {
+  position: relative;
+  z-index: 25; /* Same as about to stack properly */
+  background-color: var(--color-bg-primary);
+  will-change: transform;
+}
+
+/* Scroll indicator styling */
+.scroll-indicator {
+  position: fixed;
+  bottom: 30px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 30px;
+  height: 50px;
+  border: 2px solid rgba(255, 255, 255, 0.6);
+  border-radius: 15px;
+  opacity: 0;
+  z-index: 100;
+}
+
+.scroll-indicator span {
+  position: absolute;
+  top: 8px;
+  left: 50%;
+  width: 6px;
+  height: 6px;
+  margin-left: -3px;
+  background-color: #fff;
+  border-radius: 50%;
+  animation: scrollAnim 1.5s infinite;
+}
+
+@keyframes scrollAnim {
+  0% {
+    transform: translateY(0);
+    opacity: 0;
+  }
+  30% {
+    opacity: 1;
+  }
+  100% {
+    transform: translateY(20px);
+    opacity: 0;
+  }
+}
+
+/* Responsive styles */
 @media (max-width: 768px) {
-    .hero-content h1 {
-        font-size: 2.25rem; /* 36px */
-    }
-    
-    .hero-content p {
-        font-size: 1.125rem; /* 18px */
-    }
+  .hero-content h1 {
+    font-size: 2.25rem; /* 36px */
+  }
+
+  .zoom-dot {
+    width: 100px;
+    height: 100px;
+  }
+
+  .scroll-indicator {
+    bottom: 20px;
+    width: 24px;
+    height: 40px;
+  }
+}
+
+@media (max-width: 480px) {
+  .zoom-dot {
+    width: 80px;
+    height: 80px;
+  }
+
+  .hero-content h1 {
+    font-size: 1.8rem;
+  }
+
+  .zoom-text {
+    font-size: 2rem;
+  }
 }
